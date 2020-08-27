@@ -1,0 +1,71 @@
+html,
+body {
+  height: 100%;
+  font-family: 'Raleway', sans-serif;
+}
+
+.navbar-nav.navbar-center {
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+}
+
+.header{
+    background: #fff;
+}
+
+
+/* untuk mengatur zoom out menu */
+.nav-item{
+    /* background-color: #0062E6; */
+    transition: transform .2s;
+    padding: 5px;
+    font-size: 30px;
+}
+
+.nav-item:hover {
+    /* -ms-transform: scale(.5); IE 9 */
+    /* -webkit-transform: scale(.5); Safari 3-8 */
+    transform: scale(1.1); 
+}
+
+#page-content {
+  flex: 1 0 auto;
+}
+
+#sticky-footer {
+  flex-shrink: none;
+}
+
+.form-horizontal {
+    max-width: 760px;
+    padding: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 0.3em;
+    background-color: #f2f2f2;
+}
+h3 { 
+    font-family: 'Open Sans' , sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    color: #000000;
+    margin-top: 2%;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+.form-group{
+    max-width: 100%;
+}
+
+/* Other Classes for Page Styling */
+
+body {
+  background: #007bff;
+  background: linear-gradient(to right, #0062E6, #33AEFF);
+}
