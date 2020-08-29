@@ -86,7 +86,22 @@ include('header.php');
                             <td><?php echo $d['no_antrian']; ?></td>
                         </tr>
                     </table>
-                    <?php } ?>
+                    
+                    <?php
+                    $id = $d['id_antrian']+1;
+                    $sql1=mysqli_query($koneksi, "SELECT * FROM antrian WHERE id_antrian='$id'");
+                    $d1 =mysqli_fetch_array($sql1);
+                    $id_mhs = $d1['id_mahasiswa'];
+                    $sql2=mysqli_query($koneksi, "SELECT * FROM mahasiswa WHERE id_mahasiswa='$id_mhs'");
+                    $d2 =mysqli_fetch_array($sql2);
+
+                    $to = $d2['email_mahasiswa'];
+                    $subject = "Keuangan Akakom";
+                    $txt = "Silahkan menuju loket pembayaran";
+                    $headers = "From: oktaviasusanti@gmail.com";
+                    
+                    mail($to,$subject,$txt,$headers);
+                    } ?>
                 </div>
                 <div class="panel-footer">
                     <center><a class="btn btn-danger" href="scan-antrian.php">Kembali</a></center>
