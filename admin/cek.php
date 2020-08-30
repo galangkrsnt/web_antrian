@@ -106,15 +106,17 @@ include('header.php');
             <div class="panel-footer">
                 <form method="POST">
                     <input type="text" name="status_antrian" value="selesai" hidden>
-                    <input type="submit" name="update" value="Selesai">
+                    <button type="submit" class="btn btn-primary btn-block" value="submit">Selesai</button>
                 </form>
+                <?php
+                if (isset($_POST['submit'])) {
+                    $status = $_POST['status_antrian'];
+                    $sql3 = mysqli_query($koneksi, "UPDATE antrian SET status_antrian = '$status' WHERE id_mahasiswa='$id_mhs'");
+                    $d3 = mysqli_fetch_array($sql3);
+                    header("Location:scan-antrian.php");
+                }
+                ?>
             </div>
-            <?php
-            $status = $_POST['status_antrian'];
-            $sql3 = mysqli_query($koneksi, "UPDATE antrian SET status_antrian = '$status' WHERE id_mahasiswa='$id_mhs'");
-            $d3 = mysqli_fetch_array($sql3);
-            header("scan-antrian.php");
-            ?>
         </div>
     </div>
 </div>
