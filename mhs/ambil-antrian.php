@@ -222,7 +222,7 @@ echo '
 
 }elseif($cstatus_antrian=='Batal'){?>
     <h2>Antrian anda dibatalkan secara otomatis oleh sistem. Silakan ambil ulang antrian anda.</h2>
-    <form class="form-horizontal" action="proses_antrian.php" method="POST">
+    <form class="form-horizontal" action="prosesantrian-new.php" method="POST">
         <div class="form-group">
             <label for="tanggal" class="col-sm-3 control-label">Tanggal</label>
             <div class="col-sm-12">
@@ -261,7 +261,7 @@ echo '
     </form>
 <?php 
 }else{?>
-    <form class="form-horizontal" action="proses_antrian.php" method="POST">
+    <form class="form-horizontal" action="prosesantrian-new.php" method="POST">
         <div class="form-group">
             <label for="tanggal" class="col-sm-3 control-label">Tanggal</label>
             <div class="col-sm-12">
