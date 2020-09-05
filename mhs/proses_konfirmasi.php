@@ -29,7 +29,7 @@ include('../phpqrcode/qrlib.php');
 
     if($rentangjam == 1){
         if($tgl_antri == $tgl_skrg){
-            if($jam_skrg <= '07:30'){ // 8 - 9
+            if($jam_skrg <= '07:55'){ // 8 - 9
                 // echo "silakan input pesan antrian";
                 // cek no antrian akhir
                 $sqlb ="SELECT MAX(no_antrian) AS no_antrian FROM antrian an
@@ -57,7 +57,7 @@ include('../phpqrcode/qrlib.php');
         
     }elseif($rentangjam == 2){ // 9 - 10
         if($tgl_antri == $tgl_skrg){
-            if($jam_skrg <= '08:30'){ // 8 - 9
+            if($jam_skrg <= '08:55'){ // 8 - 9
                 // echo "silakan input pesan antrian";
                 // cek no antrian akhir
                 $sqlb ="SELECT MAX(no_antrian) AS no_antrian FROM antrian an
@@ -85,7 +85,7 @@ include('../phpqrcode/qrlib.php');
         
     }elseif($rentangjam == 3){ // 10 - 11
         if($tgl_antri == $tgl_skrg){
-            if($jam_skrg <= '09:30'){ // 8 - 9
+            if($jam_skrg <= '09:55'){ // 8 - 9
                 // echo "silakan input pesan antrian";
                 // cek no antrian akhir
                 $sqlb ="SELECT MAX(no_antrian) AS no_antrian FROM antrian an
@@ -113,7 +113,7 @@ include('../phpqrcode/qrlib.php');
         
     }elseif($rentangjam == 4){ // 11 - 12
         if($tgl_antri == $tgl_skrg){
-            if($jam_skrg <= '10:30'){ // 8 - 9
+            if($jam_skrg <= '10:55'){ // 8 - 9
                 // echo "silakan input pesan antrian";
                 // cek no antrian akhir
                 $sqlb ="SELECT MAX(no_antrian) AS no_antrian FROM antrian an
@@ -141,7 +141,7 @@ include('../phpqrcode/qrlib.php');
         
     }elseif($rentangjam == 5){ // 13 - 14
         if($tgl_antri == $tgl_skrg){
-            if($jam_skrg <= '12:30'){ // 8 - 9
+            if($jam_skrg <= '12:55'){ // 8 - 9
                 // echo "silakan input pesan antrian";
                 // cek no antrian akhir
                 $sqlb ="SELECT MAX(no_antrian) AS no_antrian FROM antrian an
@@ -169,7 +169,7 @@ include('../phpqrcode/qrlib.php');
         
     }elseif($rentangjam == 6){ // 14 - 15
         if($tgl_antri == $tgl_skrg){
-            if($jam_skrg <= '13:30'){ // 8 - 9
+            if($jam_skrg <= '13:55'){ // 8 - 9
                 // echo "silakan input pesan antrian";
                 // cek no antrian akhir
                 $sqlb ="SELECT MAX(no_antrian) AS no_antrian FROM antrian an
@@ -197,7 +197,7 @@ include('../phpqrcode/qrlib.php');
         
     }elseif($rentangjam == 7){ // 15 - 16
         if($tgl_antri == $tgl_skrg){
-            if($jam_skrg <= '14:30'){ // 8 - 9
+            if($jam_skrg <= '14:55'){ // 8 - 9
                 // echo "silakan input pesan antrian";
                 // cek no antrian akhir
                 $sqlb ="SELECT MAX(no_antrian) AS no_antrian FROM antrian an

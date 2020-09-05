@@ -38,7 +38,7 @@ return $hasil;
 }
 
 function cariMahasiswa($kondisi){
- $sql = "select * from mahasiswa where id_mahasiswa = '$kondisi'";
+ $sql = "select * from mahasiswa where nim = '$kondisi'";
  return bacaMahasiswa($sql);
 } 
 

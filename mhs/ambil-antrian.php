@@ -33,43 +33,43 @@ $jam_skrg          = date('H:i');
 $tgl_skrg          = date('Y-m-d');
 // echo $jam_skrg;
 if($crentangjam == 1){
-    if(($jam_skrg > '07:30') AND ($tgl_skrg == $ctgl_antri) OR ($tgl_skrg > $ctgl_antri)){
+    if(($jam_skrg > '07:55') AND ($tgl_skrg == $ctgl_antri) OR ($tgl_skrg > $ctgl_antri)){
         // $rentangjam = '08:00 - 09:00';
         $ustatus_antrian = 'Batal';
         $updatejadwal = updateStatusAntrian($cid_jadwalAntrian, $ustatus_antrian);
     }
 }elseif($crentangjam == 2){
-    if(($jam_skrg > '08:30') AND ($tgl_skrg == $ctgl_antri) OR ($tgl_skrg > $ctgl_antri)){
+    if(($jam_skrg > '08:55') AND ($tgl_skrg == $ctgl_antri) OR ($tgl_skrg > $ctgl_antri)){
         // $rentangjam = '08:00 - 09:00';
         $ustatus_antrian = 'Batal';
         $updatejadwal = updateStatusAntrian($cid_jadwalAntrian, $ustatus_antrian);
     }
 }elseif($crentangjam == 3){
-    if(($jam_skrg > '09:30') AND ($tgl_skrg == $ctgl_antri) OR ($tgl_skrg > $ctgl_antri)){
+    if(($jam_skrg > '09:55') AND ($tgl_skrg == $ctgl_antri) OR ($tgl_skrg > $ctgl_antri)){
         // $rentangjam = '08:00 - 09:00';
         $ustatus_antrian = 'Batal';
         $updatejadwal = updateStatusAntrian($cid_jadwalAntrian, $ustatus_antrian);
     }
 }elseif($crentangjam == 4){
-    if(($jam_skrg > '10:30') AND ($tgl_skrg == $ctgl_antri) OR ($tgl_skrg > $ctgl_antri)){
+    if(($jam_skrg > '10:55') AND ($tgl_skrg == $ctgl_antri) OR ($tgl_skrg > $ctgl_antri)){
         // $rentangjam = '08:00 - 09:00';
         $ustatus_antrian = 'Batal';
         $updatejadwal = updateStatusAntrian($cid_jadwalAntrian, $ustatus_antrian);
     }
 }elseif($crentangjam == 5) {
-    if(($jam_skrg > '12:30') AND ($tgl_skrg == $ctgl_antri) OR ($tgl_skrg > $ctgl_antri)){
+    if(($jam_skrg > '12:55') AND ($tgl_skrg == $ctgl_antri) OR ($tgl_skrg > $ctgl_antri)){
         // $rentangjam = '08:00 - 09:00';
         $ustatus_antrian = 'Batal';
         $updatejadwal = updateStatusAntrian($cid_jadwalAntrian, $ustatus_antrian);
     }
 }elseif($crentangjam == 6){
-    if(($jam_skrg > '13:30') AND ($tgl_skrg == $ctgl_antri) OR ($tgl_skrg > $ctgl_antri)){
+    if(($jam_skrg > '13:55') AND ($tgl_skrg == $ctgl_antri) OR ($tgl_skrg > $ctgl_antri)){
         // $rentangjam = '08:00 - 09:00';
         $ustatus_antrian = 'Batal';
         $updatejadwal = updateStatusAntrian($cid_jadwalAntrian, $ustatus_antrian);
     }
 }elseif($crentangjam == 7){
-    if(($jam_skrg > '14:30')  AND ($tgl_skrg == $ctgl_antri) OR ($tgl_skrg > $ctgl_antri)){
+    if(($jam_skrg > '14:55')  AND ($tgl_skrg == $ctgl_antri) OR ($tgl_skrg > $ctgl_antri)){
         // $rentangjam = '08:00 - 09:00';
         $ustatus_antrian = 'Batal';
         $updatejadwal = updateStatusAntrian($cid_jadwalAntrian, $ustatus_antrian);

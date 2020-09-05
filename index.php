@@ -52,51 +52,16 @@
     $data_max_antrian = bacaMaxAntrian($sql);
     if(isset($data_max_antrian)){
         foreach($data_max_jantrian as $antrian){
-            // $id_jadwalAntrian1 = $antrian2['id_jadwalAntrian'];
-            // $id_mahasiswa = $antrian2['id_mahasiswa'];
-            // $tgl_antri = $antrian2['tgl_antri'];
-            // $status_antrian = $antrian2['status_antrian'];
+
             $no_antrian = $antrian['no_antrian'];
         }
-        // $id_jadwalAntrian1 = $id_jadwalAntrian1;
-        // $id_mahasiswa = $id_mahasiswa;
-        // $tgl_antri = $tgl_antri;
-        // $status_antrian = $status_antrian;
+
         $no_antrian = $no_antrian;
     }else{
         $no_antrian = 0;
     }
 
-    // $id_jadwalAntrian1 = '';
-    // $no_antrian1 = '';
-    // $sqla = "SELECT * FROM antrian where id_jadwalAntrian = '$id_jadwalAntrian1'";
-    // $data_max_antrian = bacaMaxAntrian($sqla);
-    // if(isset($data_max_antrian)){
-    //     foreach($data_max_antrian as $antrian1){
-    //         $no_antrian1 = $antrian1['no_antrian'];
-    //     }
-    //     $no_antrian1 = $no_antrian1;
-    // }
 
-    // $sqlb ="SELECT * from jadwalantrian where id_loket = 2 order by id_jadwalAntrian desc limit 1";
-    // $data_max_jantrian2 = bacaJadwalAntrianAkhir($sqlb);
-    // if(isset($data_max_jantrian2)){
-    // foreach($data_max_jantrian2 as $antrian2){
-    //     $id_jadwalAntrian2 = $antrian2['id_jadwalAntrian'];
-    //     $id_mahasiswa = $antrian2['id_mahasiswa'];
-    //     $tgl_antri = $antrian2['tgl_antri'];
-    //     $status_antrian = $antrian2['status_antrian'];
-    //     // $no_antrian = $antrian2['no_antrian'];
-    // }}
-    // $id_jadwalAntrian2 = '';
-    // $no_antrian_2 = '';
-    // $sqla2 = "SELECT * FROM antrian where id_jadwalAntrian = '$id_jadwalAntrian2'";
-    // $data_max_antrian2 = bacaMaxAntrian($sqla2);
-    // if(isset($data_max_antrian2)){
-    //     foreach($data_max_antrian2 as $antrian2){
-    //         $no_antrian_2 = $antrian2['no_antrian'];
-    //     }
-    // }
     ?>
     <div id="page-content">
         <div class="container text-center">

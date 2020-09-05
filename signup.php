@@ -56,6 +56,13 @@
                         <p class="text-center" style="color:black"><b>Registrasi Gagal</b></p>
                     </div>
                 </form>';
+            }elseif(isset($_GET['gagal-2'])){
+                echo '
+                <form class="form-horizontal" action="" method="" class="border border-danger" style="border-style: solid;border-color: red;background-color: #f09e9e">
+                    <div class="col-sm-12">
+                        <p class="text-center" style="color:black"><b>Registrasi Gagal. NIM telah terdaftar di sistem.</b></p>
+                    </div>
+                </form>';
             }
         ?>
         
