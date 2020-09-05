@@ -30,7 +30,7 @@
                     <a class="nav-link" href="#">Beranda</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Syarat & Ketentuan</a>
+                    <a class="nav-link" href="snk.php">Syarat & Ketentuan</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="signup.php">Daftar</a>
@@ -44,76 +44,59 @@
     <?php
     require_once 'prosesindex.php';
 
-    // loket 1
-    // $sql1 ="SELECT MAX(ja.id_jadwalAntrian) as id_jadwalAntrian, ja.id_mahasiswa, ja.tgl_antri, ja.status_antrian, an.no_antrian, ja.rentangjam, ja.id_loket FROM antrian an
-    //         inner join jadwalantrian ja on ja.id_jadwalAntrian = an.id_antrian
-    //         where ja.id_loket = 1 order by id_jadwalAntrian desc limit 1";
-    // $data_max_antrian = bacaJadwalAntrianAkhir3($sql1);
-    // foreach($data_max_antrian as $antrian2){
-    //     $id_jadwalAntrian = $antrian2['id_jadwalAntrian'];
-    //     $id_mahasiswa = $antrian2['id_mahasiswa'];
-    //     $tgl_antri = $antrian2['tgl_antri'];
-    //     $status_antrian = $antrian2['status_antrian'];
-    //     $no_antrian1 = $antrian2['no_antrian'];
+    date_default_timezone_set('Asia/Jakarta');
+
+    $tgl_skrg = date('Y-m-d');
+
+    $sql ="SELECT * from antrian where status_antrian = 'Dilayani' and tgl_antrian like '$tgl_skrg' order by id_antrian desc limit 1";
+    $data_max_antrian = bacaMaxAntrian($sql);
+    if(isset($data_max_antrian)){
+        foreach($data_max_jantrian as $antrian){
+            // $id_jadwalAntrian1 = $antrian2['id_jadwalAntrian'];
+            // $id_mahasiswa = $antrian2['id_mahasiswa'];
+            // $tgl_antri = $antrian2['tgl_antri'];
+            // $status_antrian = $antrian2['status_antrian'];
+            $no_antrian = $antrian['no_antrian'];
+        }
+        // $id_jadwalAntrian1 = $id_jadwalAntrian1;
+        // $id_mahasiswa = $id_mahasiswa;
+        // $tgl_antri = $tgl_antri;
+        // $status_antrian = $status_antrian;
+        $no_antrian = $no_antrian;
+    }else{
+        $no_antrian = 0;
+    }
+
+    // $id_jadwalAntrian1 = '';
+    // $no_antrian1 = '';
+    // $sqla = "SELECT * FROM antrian where id_jadwalAntrian = '$id_jadwalAntrian1'";
+    // $data_max_antrian = bacaMaxAntrian($sqla);
+    // if(isset($data_max_antrian)){
+    //     foreach($data_max_antrian as $antrian1){
+    //         $no_antrian1 = $antrian1['no_antrian'];
+    //     }
+    //     $no_antrian1 = $no_antrian1;
     // }
 
-    // status = Pesan Antrian dan tampilkan rentang jam saat ini
-    $sqlb ="SELECT * from jadwalantrian where id_loket = 1 order by id_jadwalAntrian desc limit 1";
-    $data_max_jantrian = bacaJadwalAntrianAkhir($sqlb);
-    if(isset($data_max_jantrian)){
-    foreach($data_max_jantrian as $antrian2){
-        $id_jadwalAntrian1 = $antrian2['id_jadwalAntrian'];
-        $id_mahasiswa = $antrian2['id_mahasiswa'];
-        $tgl_antri = $antrian2['tgl_antri'];
-        $status_antrian = $antrian2['status_antrian'];
-        // $no_antrian = $antrian2['no_antrian'];
-    }
-        $id_jadwalAntrian1 = $id_jadwalAntrian1;
-        $id_mahasiswa = $id_mahasiswa;
-        $tgl_antri = $tgl_antri;
-        $status_antrian = $status_antrian;
-    }
-    $id_jadwalAntrian1 = '';
-    $no_antrian1 = '';
-    $sqla = "SELECT * FROM antrian where id_jadwalAntrian = '$id_jadwalAntrian1'";
-    $data_max_antrian = bacaMaxAntrian($sqla);
-    if(isset($data_max_antrian)){
-        foreach($data_max_antrian as $antrian1){
-            $no_antrian1 = $antrian1['no_antrian'];
-        }
-        $no_antrian1 = $no_antrian1;
-    }
-    // loket 2
-    // $sql1 ="SELECT MAX(ja.id_jadwalAntrian) as id_jadwalAntrian, ja.id_mahasiswa, ja.tgl_antri, ja.status_antrian, an.no_antrian, ja.rentangjam, ja.id_loket FROM antrian an
-    //         inner join jadwalantrian ja on ja.id_jadwalAntrian = an.id_antrian
-    //         where ja.id_loket = 2 order by id_jadwalAntrian desc limit 1";
-    // $data_max_antrian = bacaJadwalAntrianAkhir3($sql1);
-    // foreach($data_max_antrian as $antrian2){
-    //     $id_jadwalAntrian = $antrian2['id_jadwalAntrian'];
+    // $sqlb ="SELECT * from jadwalantrian where id_loket = 2 order by id_jadwalAntrian desc limit 1";
+    // $data_max_jantrian2 = bacaJadwalAntrianAkhir($sqlb);
+    // if(isset($data_max_jantrian2)){
+    // foreach($data_max_jantrian2 as $antrian2){
+    //     $id_jadwalAntrian2 = $antrian2['id_jadwalAntrian'];
     //     $id_mahasiswa = $antrian2['id_mahasiswa'];
     //     $tgl_antri = $antrian2['tgl_antri'];
     //     $status_antrian = $antrian2['status_antrian'];
-    //     $no_antrian2 = $antrian2['no_antrian'];
+    //     // $no_antrian = $antrian2['no_antrian'];
+    // }}
+    // $id_jadwalAntrian2 = '';
+    // $no_antrian_2 = '';
+    // $sqla2 = "SELECT * FROM antrian where id_jadwalAntrian = '$id_jadwalAntrian2'";
+    // $data_max_antrian2 = bacaMaxAntrian($sqla2);
+    // if(isset($data_max_antrian2)){
+    //     foreach($data_max_antrian2 as $antrian2){
+    //         $no_antrian_2 = $antrian2['no_antrian'];
+    //     }
     // }
-    $sqlb ="SELECT * from jadwalantrian where id_loket = 2 order by id_jadwalAntrian desc limit 1";
-    $data_max_jantrian2 = bacaJadwalAntrianAkhir($sqlb);
-    if(isset($data_max_jantrian2)){
-    foreach($data_max_jantrian2 as $antrian2){
-        $id_jadwalAntrian2 = $antrian2['id_jadwalAntrian'];
-        $id_mahasiswa = $antrian2['id_mahasiswa'];
-        $tgl_antri = $antrian2['tgl_antri'];
-        $status_antrian = $antrian2['status_antrian'];
-        // $no_antrian = $antrian2['no_antrian'];
-    }}
-    $id_jadwalAntrian2 = '';
-    $no_antrian_2 = '';
-    $sqla2 = "SELECT * FROM antrian where id_jadwalAntrian = '$id_jadwalAntrian2'";
-    $data_max_antrian2 = bacaMaxAntrian($sqla2);
-    if(isset($data_max_antrian2)){
-        foreach($data_max_antrian2 as $antrian2){
-            $no_antrian_2 = $antrian2['no_antrian'];
-        }
-    }
     ?>
     <div id="page-content">
         <div class="container text-center">
@@ -124,37 +107,22 @@
             <table class="table table-bordered table-light">
                 <thead class="thead-dark">
                     <tr>
-                        <th scope="col" class="text-center" style="width:50%">LOKET 1</th>
-                        <th scope="col" class="text-center" style="width:50%">LOKET 2</th>
+                        <th scope="col" class="text-center" style="width:100%">LOKET 1</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                     <td>No. Antrian :</td>
-                    <td>No. Antrian :</td>
                     </tr>
                     <tr>
                     <td>
                         <div class=card>
                             <div class="card-body">
                             <?php 
-                                if($no_antrian1 == 0){
+                                if($no_antrian == 0){
                                     echo "0";
                                 }else{
-                                    echo $no_antrian1;
-                                }
-                            ?>
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        <div class=card>
-                            <div class="card-body">
-                            <?php 
-                                if($no_antrian_2 == 0){
-                                    echo "0";
-                                }else{
-                                    echo $no_antrian_2;
+                                    echo $no_antrian;
                                 }
                             ?>
                             </div>
