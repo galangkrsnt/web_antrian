@@ -39,7 +39,7 @@ Function bacaMaxAntrian($sql){
 	while($baris = mysqli_fetch_assoc($hasil)){
 	$data[$i]['no_antrian']= $baris['no_antrian'];
 	$data[$i]['id_jadwalAntrian']= $baris['id_jadwalAntrian'];
-	// $data[$i]['nama_barang'] = $baris['nama_barang'];
+
 	$i++;
 	}
 	mysqli_close($koneksi);

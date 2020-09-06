@@ -13,7 +13,7 @@ include('../phpqrcode/qrlib.php');
     $id_jadwalAntrian  = $_POST['id_jadwalAntrian'];
 
     // cek jadwalantrian
-    $sql = "SELECT * from jadwalantrian where id_jadwalAntrian = '$id_jadwalAntrian'  order by id_jadwalAntrian desc limit 1";
+    $sql = "SELECT * from jadwalantrian where id_jadwalAntrian = '$id_jadwalAntrian' and status_antrian = 'Pesan Antrian' order by id_jadwalAntrian desc limit 1";
     $data_max = bacaJadwalAntrianAkhir($sql);
     foreach($data_max as $dataantriansaya){
         $id_jadwalAntrian = $dataantriansaya['id_jadwalAntrian'];
@@ -32,22 +32,24 @@ include('../phpqrcode/qrlib.php');
             if($jam_skrg <= '07:55'){ // 8 - 9
                 // echo "silakan input pesan antrian";
                 // cek no antrian akhir
-                $sqlb ="SELECT MAX(no_antrian) AS no_antrian FROM antrian an
-                        inner join jadwalantrian ja on ja.id_jadwalAntrian = an.id_antrian
-                        where ja.tgl_antri like '".$tgl_antri."' and ja.id_loket = $id_loket";
-                $data_max_antrian = bacaJadwalAntrianAkhir2($sqlb);
+                $sqlb ="SELECT MAX(no_antrian) AS no_antrian, id_jadwalAntrian FROM antrian
+                        where tgl_antrian like '".$tgl_antri."'";
+                $data_max_antrian = bacaMaxAntrian($sqlb);
                 foreach($data_max_antrian as $antrian2){
-                    $no_antrian = $antrian2['no_antrian'] + 1;
-                    // $id_jadwalAntrian = $antrian['id_jadwalAntrian'];
+                    $no_antrian = $antrian2['no_antrian']+1;
                 }
+
+                // update status antrian
                 $ustatus_antrian = 'Menunggu';
                 $updatejadwal = updateStatusAntrian($id_jadwalAntrian, $ustatus_antrian);
+                
+                // insert ke table antrian
                 $hasil2 = tambahAntrian($id_mahasiswa, $id_loket, $id_jadwalAntrian, $tgl_antri, $ustatus_antrian, $no_antrian);
                 header("Location: antrian-saya.php");
             }else{
                 $ustatus_antrian = 'Batal';
                 $updatejadwal = updateStatusAntrian($id_jadwalAntrian, $ustatus_antrian);
-                $hasil2 = tambahAntrian($id_mahasiswa, $id_loket, $id_jadwalAntrian, $tgl_antri, $ustatus_antrian, $no_antrian);
+
                 echo "<script>alert('Mohon Maaf antrian anda telah dibatalkan karena melewati batas waktu konfirmasi!');window.location='ambil-antrian.php'</script>";
                 
             }
@@ -58,24 +60,25 @@ include('../phpqrcode/qrlib.php');
     }elseif($rentangjam == 2){ // 9 - 10
         if($tgl_antri == $tgl_skrg){
             if($jam_skrg <= '08:55'){ // 8 - 9
-                // echo "silakan input pesan antrian";
                 // cek no antrian akhir
-                $sqlb ="SELECT MAX(no_antrian) AS no_antrian FROM antrian an
-                        inner join jadwalantrian ja on ja.id_jadwalAntrian = an.id_antrian
-                        where ja.tgl_antri like '".$tgl_antri."' and ja.id_loket = $id_loket";
-                $data_max_antrian = bacaJadwalAntrianAkhir2($sqlb);
+                $sqlb ="SELECT MAX(no_antrian) AS no_antrian, id_jadwalAntrian FROM antrian
+                        where tgl_antrian like '".$tgl_antri."'";
+                $data_max_antrian = bacaMaxAntrian($sqlb);
                 foreach($data_max_antrian as $antrian2){
-                    $no_antrian = $antrian2['no_antrian'] + 1;
-                    // $id_jadwalAntrian = $antrian['id_jadwalAntrian'];
+                    $no_antrian = $antrian2['no_antrian']+1;
                 }
+
+                // update status antrian
                 $ustatus_antrian = 'Menunggu';
                 $updatejadwal = updateStatusAntrian($id_jadwalAntrian, $ustatus_antrian);
+                
+                // insert ke table antrian
                 $hasil2 = tambahAntrian($id_mahasiswa, $id_loket, $id_jadwalAntrian, $tgl_antri, $ustatus_antrian, $no_antrian);
                 header("Location: antrian-saya.php");
             }else{
                 $ustatus_antrian = 'Batal';
                 $updatejadwal = updateStatusAntrian($id_jadwalAntrian, $ustatus_antrian);
-                $hasil2 = tambahAntrian($id_mahasiswa, $id_loket, $id_jadwalAntrian, $tgl_antri, $ustatus_antrian, $no_antrian);
+
                 echo "<script>alert('Mohon Maaf antrian anda telah dibatalkan karena melewati batas waktu konfirmasi!');window.location='ambil-antrian.php'</script>";
                 
             }
@@ -86,24 +89,25 @@ include('../phpqrcode/qrlib.php');
     }elseif($rentangjam == 3){ // 10 - 11
         if($tgl_antri == $tgl_skrg){
             if($jam_skrg <= '09:55'){ // 8 - 9
-                // echo "silakan input pesan antrian";
                 // cek no antrian akhir
-                $sqlb ="SELECT MAX(no_antrian) AS no_antrian FROM antrian an
-                        inner join jadwalantrian ja on ja.id_jadwalAntrian = an.id_antrian
-                        where ja.tgl_antri like '".$tgl_antri."' and ja.id_loket = $id_loket";
-                $data_max_antrian = bacaJadwalAntrianAkhir2($sqlb);
+                $sqlb ="SELECT MAX(no_antrian) AS no_antrian, id_jadwalAntrian FROM antrian
+                        where tgl_antrian like '".$tgl_antri."'";
+                $data_max_antrian = bacaMaxAntrian($sqlb);
                 foreach($data_max_antrian as $antrian2){
-                    $no_antrian = $antrian2['no_antrian'] + 1;
-                    // $id_jadwalAntrian = $antrian['id_jadwalAntrian'];
+                    $no_antrian = $antrian2['no_antrian']+1;
                 }
+
+                // update status antrian
                 $ustatus_antrian = 'Menunggu';
                 $updatejadwal = updateStatusAntrian($id_jadwalAntrian, $ustatus_antrian);
+                
+                // insert ke table antrian
                 $hasil2 = tambahAntrian($id_mahasiswa, $id_loket, $id_jadwalAntrian, $tgl_antri, $ustatus_antrian, $no_antrian);
                 header("Location: antrian-saya.php");
             }else{
                 $ustatus_antrian = 'Batal';
                 $updatejadwal = updateStatusAntrian($id_jadwalAntrian, $ustatus_antrian);
-                $hasil2 = tambahAntrian($id_mahasiswa, $id_loket, $id_jadwalAntrian, $tgl_antri, $ustatus_antrian, $no_antrian);
+
                 echo "<script>alert('Mohon Maaf antrian anda telah dibatalkan karena melewati batas waktu konfirmasi!');window.location='ambil-antrian.php'</script>";
                 
             }
@@ -114,24 +118,25 @@ include('../phpqrcode/qrlib.php');
     }elseif($rentangjam == 4){ // 11 - 12
         if($tgl_antri == $tgl_skrg){
             if($jam_skrg <= '10:55'){ // 8 - 9
-                // echo "silakan input pesan antrian";
                 // cek no antrian akhir
-                $sqlb ="SELECT MAX(no_antrian) AS no_antrian FROM antrian an
-                        inner join jadwalantrian ja on ja.id_jadwalAntrian = an.id_antrian
-                        where ja.tgl_antri like '".$tgl_antri."' and ja.id_loket = $id_loket";
-                $data_max_antrian = bacaJadwalAntrianAkhir2($sqlb);
+                $sqlb ="SELECT MAX(no_antrian) AS no_antrian, id_jadwalAntrian FROM antrian
+                        where tgl_antrian like '".$tgl_antri."'";
+                $data_max_antrian = bacaMaxAntrian($sqlb);
                 foreach($data_max_antrian as $antrian2){
-                    $no_antrian = $antrian2['no_antrian'] + 1;
-                    // $id_jadwalAntrian = $antrian['id_jadwalAntrian'];
+                    $no_antrian = $antrian2['no_antrian']+1;
                 }
+
+                // update status antrian
                 $ustatus_antrian = 'Menunggu';
                 $updatejadwal = updateStatusAntrian($id_jadwalAntrian, $ustatus_antrian);
+                
+                // insert ke table antrian
                 $hasil2 = tambahAntrian($id_mahasiswa, $id_loket, $id_jadwalAntrian, $tgl_antri, $ustatus_antrian, $no_antrian);
                 header("Location: antrian-saya.php");
             }else{
                 $ustatus_antrian = 'Batal';
                 $updatejadwal = updateStatusAntrian($id_jadwalAntrian, $ustatus_antrian);
-                $hasil2 = tambahAntrian($id_mahasiswa, $id_loket, $id_jadwalAntrian, $tgl_antri, $ustatus_antrian, $no_antrian);
+
                 echo "<script>alert('Mohon Maaf antrian anda telah dibatalkan karena melewati batas waktu konfirmasi!');window.location='ambil-antrian.php'</script>";
                 
             }
@@ -142,24 +147,25 @@ include('../phpqrcode/qrlib.php');
     }elseif($rentangjam == 5){ // 13 - 14
         if($tgl_antri == $tgl_skrg){
             if($jam_skrg <= '12:55'){ // 8 - 9
-                // echo "silakan input pesan antrian";
                 // cek no antrian akhir
-                $sqlb ="SELECT MAX(no_antrian) AS no_antrian FROM antrian an
-                        inner join jadwalantrian ja on ja.id_jadwalAntrian = an.id_antrian
-                        where ja.tgl_antri like '".$tgl_antri."' and ja.id_loket = $id_loket";
-                $data_max_antrian = bacaJadwalAntrianAkhir2($sqlb);
+                $sqlb ="SELECT MAX(no_antrian) AS no_antrian, id_jadwalAntrian FROM antrian
+                        where tgl_antrian like '".$tgl_antri."'";
+                $data_max_antrian = bacaMaxAntrian($sqlb);
                 foreach($data_max_antrian as $antrian2){
-                    $no_antrian = $antrian2['no_antrian'] + 1;
-                    // $id_jadwalAntrian = $antrian['id_jadwalAntrian'];
+                    $no_antrian = $antrian2['no_antrian']+1;
                 }
+
+                // update status antrian
                 $ustatus_antrian = 'Menunggu';
                 $updatejadwal = updateStatusAntrian($id_jadwalAntrian, $ustatus_antrian);
+                
+                // insert ke table antrian
                 $hasil2 = tambahAntrian($id_mahasiswa, $id_loket, $id_jadwalAntrian, $tgl_antri, $ustatus_antrian, $no_antrian);
                 header("Location: antrian-saya.php");
             }else{
                 $ustatus_antrian = 'Batal';
                 $updatejadwal = updateStatusAntrian($id_jadwalAntrian, $ustatus_antrian);
-                $hasil2 = tambahAntrian($id_mahasiswa, $id_loket, $id_jadwalAntrian, $tgl_antri, $ustatus_antrian, $no_antrian);
+
                 echo "<script>alert('Mohon Maaf antrian anda telah dibatalkan karena melewati batas waktu konfirmasi!');window.location='ambil-antrian.php'</script>";
                 
             }
@@ -170,24 +176,25 @@ include('../phpqrcode/qrlib.php');
     }elseif($rentangjam == 6){ // 14 - 15
         if($tgl_antri == $tgl_skrg){
             if($jam_skrg <= '13:55'){ // 8 - 9
-                // echo "silakan input pesan antrian";
                 // cek no antrian akhir
-                $sqlb ="SELECT MAX(no_antrian) AS no_antrian FROM antrian an
-                        inner join jadwalantrian ja on ja.id_jadwalAntrian = an.id_antrian
-                        where ja.tgl_antri like '".$tgl_antri."' and ja.id_loket = $id_loket";
-                $data_max_antrian = bacaJadwalAntrianAkhir2($sqlb);
+                $sqlb ="SELECT MAX(no_antrian) AS no_antrian, id_jadwalAntrian FROM antrian
+                        where tgl_antrian like '".$tgl_antri."'";
+                $data_max_antrian = bacaMaxAntrian($sqlb);
                 foreach($data_max_antrian as $antrian2){
-                    $no_antrian = $antrian2['no_antrian'] + 1;
-                    // $id_jadwalAntrian = $antrian['id_jadwalAntrian'];
+                    $no_antrian = $antrian2['no_antrian']+1;
                 }
+
+                // update status antrian
                 $ustatus_antrian = 'Menunggu';
                 $updatejadwal = updateStatusAntrian($id_jadwalAntrian, $ustatus_antrian);
+                
+                // insert ke table antrian
                 $hasil2 = tambahAntrian($id_mahasiswa, $id_loket, $id_jadwalAntrian, $tgl_antri, $ustatus_antrian, $no_antrian);
                 header("Location: antrian-saya.php");
             }else{
                 $ustatus_antrian = 'Batal';
                 $updatejadwal = updateStatusAntrian($id_jadwalAntrian, $ustatus_antrian);
-                $hasil2 = tambahAntrian($id_mahasiswa, $id_loket, $id_jadwalAntrian, $tgl_antri, $ustatus_antrian, $no_antrian);
+
                 echo "<script>alert('Mohon Maaf antrian anda telah dibatalkan karena melewati batas waktu konfirmasi!');window.location='ambil-antrian.php'</script>";
                 
             }
@@ -198,24 +205,25 @@ include('../phpqrcode/qrlib.php');
     }elseif($rentangjam == 7){ // 15 - 16
         if($tgl_antri == $tgl_skrg){
             if($jam_skrg <= '14:55'){ // 8 - 9
-                // echo "silakan input pesan antrian";
                 // cek no antrian akhir
-                $sqlb ="SELECT MAX(no_antrian) AS no_antrian FROM antrian an
-                        inner join jadwalantrian ja on ja.id_jadwalAntrian = an.id_antrian
-                        where ja.tgl_antri like '".$tgl_antri."' and ja.id_loket = $id_loket";
-                $data_max_antrian = bacaJadwalAntrianAkhir2($sqlb);
+                $sqlb ="SELECT MAX(no_antrian) AS no_antrian, id_jadwalAntrian FROM antrian
+                        where tgl_antrian like '".$tgl_antri."'";
+                $data_max_antrian = bacaMaxAntrian($sqlb);
                 foreach($data_max_antrian as $antrian2){
-                    $no_antrian = $antrian2['no_antrian'] + 1;
-                    // $id_jadwalAntrian = $antrian['id_jadwalAntrian'];
+                    $no_antrian = $antrian2['no_antrian']+1;
                 }
+
+                // update status antrian
                 $ustatus_antrian = 'Menunggu';
                 $updatejadwal = updateStatusAntrian($id_jadwalAntrian, $ustatus_antrian);
+                
+                // insert ke table antrian
                 $hasil2 = tambahAntrian($id_mahasiswa, $id_loket, $id_jadwalAntrian, $tgl_antri, $ustatus_antrian, $no_antrian);
                 header("Location: antrian-saya.php");
             }else{
                 $ustatus_antrian = 'Batal';
                 $updatejadwal = updateStatusAntrian($id_jadwalAntrian, $ustatus_antrian);
-                $hasil2 = tambahAntrian($id_mahasiswa, $id_loket, $id_jadwalAntrian, $tgl_antri, $ustatus_antrian, $no_antrian);
+
                 echo "<script>alert('Mohon Maaf antrian anda telah dibatalkan karena melewati batas waktu konfirmasi!');window.location='ambil-antrian.php'</script>";
                 
             }

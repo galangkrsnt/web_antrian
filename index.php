@@ -51,7 +51,7 @@
     $sql ="SELECT * from antrian where status_antrian = 'Dilayani' and tgl_antrian like '$tgl_skrg' order by id_antrian desc limit 1";
     $data_max_antrian = bacaMaxAntrian($sql);
     if(isset($data_max_antrian)){
-        foreach($data_max_jantrian as $antrian){
+        foreach($data_max_antrian as $antrian){
 
             $no_antrian = $antrian['no_antrian'];
         }

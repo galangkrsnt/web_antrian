@@ -38,6 +38,10 @@ return $hasil;
 }
 
 function cariMahasiswa($kondisi){
+ $sql = "select * from mahasiswa where id_mahasiswa = '$kondisi'";
+ return bacaMahasiswa($sql);
+} 
+function cekNim($kondisi){
  $sql = "select * from mahasiswa where nim = '$kondisi'";
  return bacaMahasiswa($sql);
 } 

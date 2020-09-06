@@ -134,6 +134,23 @@ Function bacaJadwalAntrianAkhir3($sql){
 	mysqli_close($koneksi);
 	return $data;
 }
+Function ambilIdJadwal($sql){
+	$data = array();
+	$koneksi = koneksiPhp();
+	$hasil = mysqli_query($koneksi, $sql);
+	
+	if (mysqli_num_rows($hasil) == 0) {
+	mysqli_close($koneksi);
+	return null;
+	}
+	$i=0;
+	while($baris = mysqli_fetch_assoc($hasil)){
+	$data[$i]['id_jadwalAntrian']= $baris['id_jadwalAntrian'];
+	$i++;
+	}
+	mysqli_close($koneksi);
+	return $data;
+}
 
 function tambahJadwalAntrian($id_mahasiswa, $id_loket, $tgl_ambil, $tgl_antrian, $status_antrian, $rentangjam){
 $koneksi = koneksiPhp();

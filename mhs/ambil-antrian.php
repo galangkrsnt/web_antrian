@@ -12,13 +12,17 @@ if(isset($_GET['status'])){
     $status = $_GET['status'];
 }
 
-
+date_default_timezone_set('Asia/Jakarta');
 $cid_jadwalAntrian = '';
 $cstatus_antrian = '';
 $crentangjam = '';
 $ctgl_antri= '';
-
-$sql = "SELECT * FROM jadwalantrian where id_mahasiswa = '".$id_mahasiswa."' order by id_jadwalAntrian desc";
+// echo "<script>
+// setTimeout(function () {
+//     window.location.reload(1);
+// }, 10000)</script>";
+// echo "<script>window.location.reload(5000)</script>";
+$sql = "SELECT * FROM jadwalantrian where id_mahasiswa = '".$id_mahasiswa."' order by id_jadwalAntrian desc limit 1";
 $ceklastdata = bacaMaxJadwal($sql);
 if($ceklastdata != null){
     foreach($ceklastdata as $datacek){
@@ -31,59 +35,69 @@ if($ceklastdata != null){
 
 $jam_skrg          = date('H:i');
 $tgl_skrg          = date('Y-m-d');
+$update_status     = '';
 // echo $jam_skrg;
 if($crentangjam == 1){
     if(($jam_skrg > '07:55') AND ($tgl_skrg == $ctgl_antri) OR ($tgl_skrg > $ctgl_antri)){
         // $rentangjam = '08:00 - 09:00';
         $ustatus_antrian = 'Batal';
         $updatejadwal = updateStatusAntrian($cid_jadwalAntrian, $ustatus_antrian);
+        $update_status = 'Batal';
     }
+    $update_status = $update_status;
 }elseif($crentangjam == 2){
     if(($jam_skrg > '08:55') AND ($tgl_skrg == $ctgl_antri) OR ($tgl_skrg > $ctgl_antri)){
         // $rentangjam = '08:00 - 09:00';
         $ustatus_antrian = 'Batal';
         $updatejadwal = updateStatusAntrian($cid_jadwalAntrian, $ustatus_antrian);
+        $update_status = 'Batal';
     }
+    $update_status = $update_status;
 }elseif($crentangjam == 3){
     if(($jam_skrg > '09:55') AND ($tgl_skrg == $ctgl_antri) OR ($tgl_skrg > $ctgl_antri)){
         // $rentangjam = '08:00 - 09:00';
         $ustatus_antrian = 'Batal';
         $updatejadwal = updateStatusAntrian($cid_jadwalAntrian, $ustatus_antrian);
+        $update_status = 'Batal';
     }
+    $update_status = $update_status;
 }elseif($crentangjam == 4){
     if(($jam_skrg > '10:55') AND ($tgl_skrg == $ctgl_antri) OR ($tgl_skrg > $ctgl_antri)){
         // $rentangjam = '08:00 - 09:00';
         $ustatus_antrian = 'Batal';
         $updatejadwal = updateStatusAntrian($cid_jadwalAntrian, $ustatus_antrian);
+        $update_status = 'Batal';
     }
+    $update_status = $update_status;
 }elseif($crentangjam == 5) {
     if(($jam_skrg > '12:55') AND ($tgl_skrg == $ctgl_antri) OR ($tgl_skrg > $ctgl_antri)){
         // $rentangjam = '08:00 - 09:00';
         $ustatus_antrian = 'Batal';
         $updatejadwal = updateStatusAntrian($cid_jadwalAntrian, $ustatus_antrian);
+        $update_status = 'Batal';
     }
+    $update_status = $update_status;
 }elseif($crentangjam == 6){
     if(($jam_skrg > '13:55') AND ($tgl_skrg == $ctgl_antri) OR ($tgl_skrg > $ctgl_antri)){
         // $rentangjam = '08:00 - 09:00';
         $ustatus_antrian = 'Batal';
         $updatejadwal = updateStatusAntrian($cid_jadwalAntrian, $ustatus_antrian);
+        $update_status = 'Batal';
     }
+    $update_status = $update_status;
 }elseif($crentangjam == 7){
     if(($jam_skrg > '14:55')  AND ($tgl_skrg == $ctgl_antri) OR ($tgl_skrg > $ctgl_antri)){
         // $rentangjam = '08:00 - 09:00';
         $ustatus_antrian = 'Batal';
         $updatejadwal = updateStatusAntrian($cid_jadwalAntrian, $ustatus_antrian);
+        $update_status = 'Batal';
     }
+    $update_status = $update_status;
 }
-// echo $cstatus_antrian;
-
-// $ustatus_antrian = 'Batal';
-// $updatejadwal = updateStatusAntrian($id_jadwalAntrian, $ustatus_antrian);
 
 
 if(($status == 'berhasil') or ($cstatus_antrian=='Pesan Antrian')){
     // ambil data antrian trakhir
-    // $id_mahasiswa = $_GET['id_mahasiswa'];
 
     $sql = "SELECT * from jadwalantrian where id_mahasiswa = '$id_mahasiswa' and status_antrian = 'Pesan Antrian' order by id_jadwalAntrian desc limit 1";
     $data_max = bacaJadwalAntrianAkhir($sql);
@@ -220,7 +234,7 @@ echo '
         </div>
     ';
 
-}elseif($cstatus_antrian=='Batal'){?>
+}elseif(($cstatus_antrian=='Batal') AND ($update_status=='Batal')){?>
     <h2>Antrian anda dibatalkan secara otomatis oleh sistem. Silakan ambil ulang antrian anda.</h2>
     <form class="form-horizontal" action="prosesantrian-new.php" method="POST">
         <div class="form-group">

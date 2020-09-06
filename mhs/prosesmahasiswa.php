@@ -8,7 +8,7 @@ $nama_mahasiswa = $_POST['nama_mahasiswa'];
 $email_mahasiswa = $_POST['email_mahasiswa'];
 
 $kondisi = $nim;
-$cek = cariMahasiswa($kondisi);
+$cek = cekNim($kondisi);
 if($cek){
     header("Location: ../signup.php?gagal-2");
 }else{

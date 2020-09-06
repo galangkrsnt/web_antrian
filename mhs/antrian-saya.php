@@ -2,6 +2,7 @@
 $antriansaya = "active";
 include('../phpqrcode/qrlib.php');  
 include('header.php');
+error_reporting(0);
 ?>
 <div class="container">
 <?php 
@@ -11,14 +12,9 @@ $status = '';
 if(isset($_GET['status'])){
     $status = $_GET['status'];
 }
-//  session_start();
-// print_r($status);
-
-
-
 
     // ambil data antrian trakhir
-    $sqlb ="SELECT * from jadwalantrian where id_mahasiswa = $id_mahasiswa order by id_jadwalAntrian desc limit 1";
+    $sqlb ="SELECT * from jadwalantrian where id_mahasiswa = $id_mahasiswa and status_antrian != 'Batal' AND status_antrian != 'Pesan Antrian' order by id_jadwalAntrian desc limit 1";
     $data_max_jantrian = bacaJadwalAntrianAkhir($sqlb);
     foreach($data_max_jantrian as $antrian2){
         $id_jadwalAntrian1 = $antrian2['id_jadwalAntrian'];
@@ -35,6 +31,7 @@ if(isset($_GET['status'])){
         foreach($data_max_antrian as $antrian1){
             $no_antrian2 = $antrian1['no_antrian'];
         }
+        $no_antrian2 = $no_antrian2;
     }
     
     // $sql = "SELECT j.id_jadwalAntrian, j.id_mahasiswa, j.tgl_antri, a.status_antrian, a.no_antrian FROM jadwalantrian j 
@@ -83,23 +80,24 @@ echo '
     </table>
     <table class="table table-bordered table-light col-sm-12">
         <tr>
-            <td>No. Antrian</td>
+            <td style=width:15%>No. Antrian</td>
+            <td>:</td>
             <td>'.$no_antrian2.'</td>
-            <td></td>
+            <td rowspan="4"><img src="'.$tempdir.$namaFile.'" /></td>
         </tr>
         <tr>
             <td>Status</td>
-            <td colspan="2" >'.$status_antrian.'</td>
+            <td>:</td>
+            <td >'.$status_antrian.'</td>
+
+        </tr>
+        <tr>
+            <td>Tanggal Antrian</td>
+            <td>:</td>
+            <td>'.$tgl_antrian_saya.'</td> 
         </tr>
         <tr>
             
-            <td>Tanggal Antrian</td>
-            <td>'.$tgl_antrian_saya.'</td>
-            <td rowspan="2"><img src="'.$tempdir.$namaFile.'" /></td>
-        </tr>
-        <tr>
-            <td> Antrian Saat Ini</td>
-            <td> 1</td>
         </tr>
     </table>
     </div>
