@@ -58,7 +58,7 @@ if(($tgl_antri == $tgl_skrg) AND ($rentang == 1)){
         $updatejadwal = updateStatusAntrian($id_jadwalAntrian, $ustatus_antrian);
     }
 }else{
-    echo 'asdasd';
+ 
 }
 ?>
 <div class="container">
@@ -95,8 +95,9 @@ if(isset($_POST['tanggal'])){
     <thead class="thead-dark">
         <tr>
             <th scope="col" class="text-center" style="width:10%">No</th>
-            <th scope="col" class="text-center" style="width:40%">Nama</th>
-            <th scope="col" class="text-center" style="width:25%">Tanggal Antrian</th>
+            <th scope="col" class="text-center" style="width:30%">Nama</th>
+            <th scope="col" class="text-center" style="width:20%">Tanggal Antrian</th>
+            <th scope="col" class="text-center" style="width:15%">Rentang Jam</th>
             <th scope="col" class="text-center" style="width:25%">Status</th>
         </tr>
     </thead>
@@ -114,7 +115,7 @@ if(isset($_POST['tanggal'])){
         $tgl_ambil      = $jadwal['tgl_ambil'];
         $tgl_antri      = $jadwal['tgl_antri'];
         $status_antrian = $jadwal['status_antrian'];
-        // $total_antrian  = $jadwal['total_antrian'];
+        $rentangjam    = $jadwal['rentangjam'];
         
     
     $kondisi = "$id_mahasiswa";
@@ -122,12 +123,27 @@ if(isset($_POST['tanggal'])){
     foreach($data2 as $mhs){
         $nama_mhs = $mhs['nama_mahasiswa'];
     }
-    
+    if($rentangjam == 1){
+        $rentangjam = '08:00 - 09:00';
+    }elseif($rentangjam == 2){
+        $rentangjam = '09:00 - 10:00';
+    }elseif($rentangjam == 3){
+        $rentangjam = '11:00 - 12:00';
+    }elseif($rentangjam == 4){
+        $rentangjam = '12:00 - 13:00';
+    }elseif($rentangjam == 5){
+        $rentangjam = '13:00 - 14:00';
+    }elseif($rentangjam == 6){
+        $rentangjam = '14:00 - 1500';
+    }elseif($rentangjam == 7){
+        $rentangjam = '15:00 - 16:00';
+    }
 ?>
         <tr>
             <th scope="row" class="text-center"><?= $i ?></th>
             <td><?= $nama_mhs ?></td>
             <td class="text-center"><?= $tgl_antri ?></td>
+            <td class="text-center"><?= $rentangjam ?></td>
             <td class="text-center"><?= $status_antrian ?></td>
         </tr>
     <?php $i++; }

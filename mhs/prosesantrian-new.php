@@ -20,18 +20,21 @@ error_reporting(0);
         $jumlah = $data['jumlah'];  
     }
 
-        // echo $jumlah."genap";
     $id_loket         = '1';
     $status_antrian   = 'Pesan Antrian';
 
-    // print_r($id_mahasiswa);
-    $hasil1 = tambahJadwalAntrian($id_mahasiswa, $id_loket, $tgl_ambil, $tgl_antrian, $status_antrian, $jam);
-    if($hasil1 > 0){
-        header("Location: ambil-antrian.php?status=berhasil&id_mahasiswa=".$id_mahasiswa."");
+    if($jumlah < 24){
+        // print_r($id_mahasiswa);
+        $hasil1 = tambahJadwalAntrian($id_mahasiswa, $id_loket, $tgl_ambil, $tgl_antrian, $status_antrian, $jam);
+        if($hasil1 > 0){
+            header("Location: ambil-antrian.php?status=berhasil&id_mahasiswa=".$id_mahasiswa."");
+        }else{
+            // jika gagal insert 
+            header("Location: ambil-antrian.php?status=gagal");
+            // echo "<script>alert('Mohon Maaf antrian penuh');window.location='ambil-antrian.php'</script>";
+        }
     }else{
-        // jika gagal insert 
-        header("Location: ambil-antrian.php?status=gagal");
-        // echo "<script>alert('Mohon Maaf antrian penuh');window.location='ambil-antrian.php'</script>";
+        echo "<script>alert('Maaf antrian untuk rentang jam ini sudah penuh');window.location='ambil-antrian.php'</script>";
     }
 
     
